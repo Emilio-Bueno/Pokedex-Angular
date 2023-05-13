@@ -1,45 +1,49 @@
-<div class="container border rounded bg-white p-4" style="width: 600px;">
-    <div class="row display-4 mb-3">
-      <div class="col text-center">
-        Pokédex
-      </div>
-    </div>
-    <div class="row">
-    <div class="row">
-      <div class="display-6 text-center">
-        {{getId()}} -
-        {{getName() | titlecase}}
-      </div>
-    </div>
-    <div class="p-4 bg-secondary rounded mt-3">
-      <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-2">
-          <img [src]="poke.sprites.other.home.front_default" width="400px">
-        </div>
-      </div>
-      <div class="row text-white mt-5">
-        <div class="col-md-6 mb-3">
-          Altura: {{getAltura()}}
-        </div>
-        <div class="col-md-5 mb-3">
-          Peso: {{getPeso()}}
-        </div>
-      </div>
-      <div class="row text-white">
-        <div class="col-md-6">
-          Habilidade 1: {{getHabilidade() | titlecase}}
-        </div>
-        <div class="col-md-5">
-          Habilidade 2: {{getHabilidade2() | titlecase}}
-        </div>
-      </div>
-      <div class="row m-3 justify-content-between">
-        <button (click)="prevPoke()" class="btn border-white w-25 btn-danger">
-          </button>
-            <button (click)="nextPoke()" class="btn border-white w-25 btn-success">
-              >
-            </button>
-      </div>
+<div class="container border bg-dark mb-5 mt-3 p-4" style="width:600px;">
+  <div class="row display-6 mb-3">
+    <div class="col text-light text-center">
+      Pokédex
     </div>
   </div>
+
+  <div class="row">
+    <div class="display-6 text-light text-center">
+      {{Id()}} - {{Nome() | titlecase}}
+    </div>
+  </div>
+
+  <div class="p-4 bg-light rounded mt-3">
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-2">
+        <img [src]="Pokedex.img" width="450px" class="shadow-lg mt-3 p-3"><br><br>
+      </div>
+    </div>
+
+    <div class="row text-info mt-3">
+      <div class="col-md-6 mb-3">
+        Altura: {{Altura()}}
+      </div>
+      <div class="col-md-5 mb-3">
+        Peso: {{Peso()}}
+      </div>
+    </div>
+
+    <div class="row text-info">
+      <div class="col-md-6">
+        Habilidade 1: {{Habilidade() | titlecase}}
+      </div>
+      <div class="col-md-5">
+        Habilidade 2: {{Habilidade2() | titlecase}}
+      </div>
+    </div>
+
+    <div class="row m-3 justify-content-between">
+      <button (click)="Anterior()" class="btn border-white w-25 btn-danger">
+        < 
+      </button>
+          <button (click)="Proximo()" class="btn border-white w-25 btn-success">
+            >
+          </button>
+    </div>
+  </div>
+</div>

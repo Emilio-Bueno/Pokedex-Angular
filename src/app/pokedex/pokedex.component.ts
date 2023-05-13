@@ -10,78 +10,58 @@ import { Pokedex } from '../Pokedex';
 })
 export class PokedexComponent implements OnInit {
 
-  poke: Pokedex = {} as Pokedex;
+
+  Pokedex: Pokedex = {} as Pokedex;
 
   constructor(private service: PokedexService) { }
 
 
   ngOnInit(): void {
-    this.loadPoke();
+    this.loadPokemon();
   }
-
-  loadPoke(): void {
-    this.service.getPokemon().subscribe(
-      {
-        next: data => this.poke = data
+  loadPokemon() {
+    this.service.getPokemon().subscribe({
+      next: data => {
+        this.Pokedex = data;
+        this.Pokedex.img = data.sprites.other.home.front_default;
       }
-    );
+    });
   }
 
 
-  getId(): number {
+  Id(): number {
     return this.service.Id;
   }
 
-  nextPoke() {
+  Proximo() {
     this.service.Id++;
-    this.loadPoke();
-    this.idSelecionado = 0;
+    this.loadPokemon();
   }
 
-  prevPoke() {
+  Anterior() {
     this.service.Id--;
-    this.loadPoke();
-    this.idSelecionado = 0;
+    this.loadPokemon();
   }
 
-  getName() : string {
-    return this.poke.name;
+  Nome() : string {
+    return this.Pokedex.name;
   }
 
-  getAltura() : number {
-    return this.poke.height;
+  Altura() : number {
+    return this.Pokedex.height;
   }
 
-  getPeso() : number {
-    return this.poke.weight;
+  Peso() : number {
+    return this.Pokedex.weight;
   }
 
 
-  getHabilidade() : string {
-    return this.poke.abilities[0].ability.name;
+  Habilidade() : string {
+    return this.Pokedex.abilities[0].ability.name;
   }
 
-  getHabilidade2(): string {
-    if (this.poke.abilities[1].ability.name === '') {
-      return "Sem habilidade secundária";
-    }
-
-    else {
-      return this.poke.abilities[1].ability.name;
-    }
-
-  }
-
-  idSelecionado : number = 0;
-
-  buscarId(){
-    if (this.idSelecionado == 0 || this.idSelecionado > 1010){
-      this.idSelecionado = 0;
-    }
-
-    else{
-      this.service.Id = this.idSelecionado;
-      this.loadPoke();
+  Habilidade2(): string {
+      return this.Pokedex.abilities[1].ability.name;
     }
   }
-}
+
